@@ -1,12 +1,49 @@
 import os
 registros = []
+from datetime import datetime
+
+registros = []
+
+def ingresar_fecha():
+    while True:
+        fecha_str = input("Ingrese una fecha (DD/MM/AAAA): ")
+        limpiar_terminal
+        try:
+            fecha = datetime.strptime(fecha_str, "%d/%m/%Y")  # Convertir la cadena en fecha
+            if 1950 <= fecha.year <= 2025:
+                return fecha
+                
+            else:
+                print("El año debe estar entre 1950 y 2025. Intente nuevamente.")
+        except ValueError:
+            
+            print("❌Formato inválido. Asegúrese de usar DD/MM/AAAA.")
+            
+def categoria():
+    while True:
+        print("Seleccione una categoría:")
+        print("1. Física")
+        print("2. Matemáticas")
+        print("3. Estadística")
+        opcion = input("Ingrese el número de la categoría: ")
+        
+        if opcion == "1":
+            return "Física"
+        elif opcion == "2":
+            return "Matemáticas"
+        elif opcion == "3":
+            return "Estadística"
+        else:
+            print("❌Opción no válida, intente nuevamente.")
 
 def ingresar_experimento():
     nombre = input("Ingrese el nombre: ")
-    fecha = int(input("Ingrese la fecha del experiemtno: "))
-    experimento = input("Ingrese el experimento: ")
-    registro = {"nombre": nombre, "fecha": fecha, "experimento": experimento}
+    fecha = ingresar_fecha()  # Llamamos a la función para obtener la fecha validada
+    experimento = categoria()
+     # Se obtiene la categoría elegida
+    registro = {"nombre": nombre, "fecha": fecha.strftime('%d/%m/%Y'), "experimento": experimento,}
     registros.append(registro)
+
 
 def limpiar_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -23,7 +60,7 @@ def eliminar_experimento():
     nombre = input("Ingrese el nombre del experimento a eliminar: ")
     global registros
     registros = [r for r in registros if r['nombre'] != nombre]
-    print("Experimento eliminado con exito")
+    print("✅ Experimento eliminado con exito")
 
 def modificar_experimento():
     nombre = input("Ingrese el nombre del experimento a modificar: ")
@@ -31,7 +68,7 @@ def modificar_experimento():
         if r['nombre'] == nombre:
             r['fecha'] = int(input("Ingrese la nueva fecha: "))
             r['experimento'] = input("Ingrese el nuevo experimento: ")
-            print("Experimento modificado.")
+            print("✅Experimento modificado.")
             return
     print("Experimento no encontrado.")
 
@@ -63,8 +100,8 @@ while True:
     elif opcion == "6":
         generar_informe()
     elif opcion == "7":
-        print("Saliendo del programa...")
+        print("👋🏻Saliendo del programa...")
         break
 
     else:
-        print("Opción no válida, intente de nuevo.")
+        print("✅Opción no válida, intente de nuevo.")
