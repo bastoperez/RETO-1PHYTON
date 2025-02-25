@@ -58,6 +58,16 @@ def mostrar_resultados():
     for r in registros:
         print(f"Nombre: {r['nombre']}, Fecha: {r['fecha']}, Tipo: {r['tipo']}")
 
+        if resultados_analisis:
+            if "promedio" in resultados_analisis:
+                print(f"📊 Promedio: {resultados_analisis['promedio']:.2f}")
+            if "maximo" in resultados_analisis:
+                print(f"📈 Valor máximo: {resultados_analisis['maximo']}")
+            if "minimo" in resultados_analisis:
+                print(f"📉 Valor mínimo: {resultados_analisis['minimo']}")
+
+            print("-" * 30)  # Separador entre registros
+
 # Función para realizar análisis de datos
 def realizar_analisis():
     global resultados_analisis  # Usamos la variable global
