@@ -1,0 +1,18 @@
+📋 INFORME DE EXPERIMENTOS
+
+Nombre: el
+Fecha: 02/07/2001
+Tipo: Física
+📊 RESULTADOS DEL ANÁLISIS
+  - Promedio: 200.00
+  - Valor máximo: 344.0
+  - Valor mínimo: 56.0
+------------------------------
+Nombre: yo
+Fecha: 02/02/2003
+Tipo: Estadística
+📊 RESULTADOS DEL ANÁLISIS
+  - Promedio: 127.00
+  - Valor máximo: 344.0
+  - Valor mínimo: 45.0
+------------------------------
